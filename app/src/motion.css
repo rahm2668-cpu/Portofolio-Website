@@ -1,0 +1,26 @@
+/* Timing follows enji.dev's HeaderTitle, PageHeader and HeaderImage sequence.
+   The SVG silhouette is traced from Rahmawan's original photograph. */
+.hero-copy,.portrait-stage{animation:none}
+.hello img{transform-origin:right center;animation:hello-wave .7s .35s cubic-bezier(.34,1.56,.64,1) both}
+.portrait-reveal{position:relative;mask-image:linear-gradient(#000 85%,transparent);-webkit-mask-image:linear-gradient(#000 85%,transparent)}
+.portrait-reveal .portrait{animation:none;opacity:0;mask-image:none;-webkit-mask-image:none;filter:drop-shadow(0 12px 25px #0007)}
+.portrait-outline{position:absolute;inset:0;width:100%;height:100%;stroke:var(--accent);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;opacity:0;pointer-events:none}
+.portrait-reveal.is-ready .portrait-outline{animation:outline-exit .2s 1.75s both}
+.portrait-outline use{stroke-dasharray:1;stroke-dashoffset:.7}
+.portrait-reveal.is-ready .portrait-outline use{animation:portrait-draw 1s .7s ease-in-out both}
+.portrait-reveal.is-ready .portrait{animation:portrait-appear .15s 1.7s both}
+.portrait-halo{background:radial-gradient(ellipse at 50% 80%,#25466a55,transparent 70%);animation:halo-appear 1.2s .6s both}
+.portrait-caption{animation:caption-appear .5s 1.85s both}
+.footer-about strong{color:var(--text);font-weight:750}
+@keyframes portrait-draw{from{stroke-dashoffset:.7}to{stroke-dashoffset:0}}
+@keyframes outline-exit{from{opacity:.6}to{opacity:0}}
+@keyframes portrait-appear{from{opacity:0}to{opacity:1}}
+@keyframes halo-appear{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+@keyframes caption-appear{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@keyframes hello-wave{0%{opacity:0;transform:translateY(16px) rotate(30deg)}65%{opacity:1;transform:translateY(-3px) rotate(-14deg)}100%{opacity:1;transform:translateY(0) rotate(0)}}
+:root[data-focus=true] .portrait-halo,:root[data-focus=true] .hello img{animation:none}
+@media(prefers-reduced-motion:reduce){
+  .portrait-reveal .portrait{opacity:1;animation:none!important}
+  .portrait-outline{display:none}
+  .portrait-caption,.portrait-halo,.hello img{animation:none!important;opacity:1;transform:none}
+}

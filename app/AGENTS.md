@@ -17,3 +17,5 @@ Preserve Quick Access, dark/light theme, Focus toggle and the GitHub social link
 Projects also includes Wedding Digital Invitation Web at https://digital-invitation-wedding-pink-mar.vercel.app/ with three real screenshots. Describe its RSVP as a browser-local demo.
 
 Wedding Digital Invitation Web Ver.2 links to https://felix-rahmawati-wedding.vercel.app/ with real cover, homepage, and gallery screenshots. Its technology labels are HTML, CSS, and JavaScript.
+
+Footer About Me now uses the user's short front-end developer bio, with that role emphasized. Home retains the CV profile. Motion follows enji.dev's staggered x:-32 entrances and silhouette-to-photo reveal; trace Rahmawan's own alpha silhouette and preserve his original face. Every page has viewport reveals, reduced-motion support, and working Quick Access/Focus.

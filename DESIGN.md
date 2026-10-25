@@ -25,3 +25,6 @@ Use the existing transparent portrait as the PNG favicon and touch icon, explici
 Wedding Digital Invitation Web uses the existing project gallery component with real opening, homepage, and event screenshots. Public runtime confirms Next.js. RSVP responses are a browser-local demo.
 
 Wedding Digital Invitation Web Ver.2 uses the shared gallery and per-project technology labels (HTML, CSS, JavaScript). Existing projects retain their Next.js and React labels.
+
+## Motion and short biography — 25 October 2026
+Motion follows the public enji.dev HeaderTitle/PageHeader timing: x:-32 to 0, opacity 0 to 1, 100ms stagger. Native Web Animations API owns content entrances; IntersectionObserver reveals sections once per visit. CSS in app/src/motion.css owns the hand spring and silhouette draw, then 150ms photo fade after 1.7s. The SVG follows Rahmawan's actual alpha cutout; original photo bytes are preserved. Reduced-motion skips entrances and outlines, shows the photo immediately, and removes decorative motion. Footer About Me is now the short user-supplied developer biography.
