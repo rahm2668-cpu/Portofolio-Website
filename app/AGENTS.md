@@ -13,3 +13,7 @@ User preferences: use Rahmawan as the identity; black/navy palette; no Blog, T.I
 Current content source is the supplied Rahmawan CV. Home profile and About Me must use its profile paragraph; resume must open the local PDF. Use only owner contact data. No Services Soon item. Projects are Kayarra Resort Hotel Website and OTA Management System Hotel with real screenshot galleries, explanations and verified framework logos. Preserve normal-flow footer layout and an anchored mobile Work disclosure. Respect reduced-motion preferences for portrait effects.
 
 Preserve Quick Access, dark/light theme, Focus toggle and the GitHub social link in future edits. GitHub profile: https://github.com/rahm2668-cpu. Keep header controls usable within a 390px mobile viewport.
+
+Projects also includes Wedding Digital Invitation Web at https://digital-invitation-wedding-pink-mar.vercel.app/ with three real screenshots. Describe its RSVP as a browser-local demo.
+
+Wedding Digital Invitation Web Ver.2 links to https://felix-rahmawati-wedding.vercel.app/ with real cover, homepage, and gallery screenshots. Its technology labels are HTML, CSS, and JavaScript.

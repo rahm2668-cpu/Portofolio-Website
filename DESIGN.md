@@ -20,3 +20,8 @@ Quick Access must remain present in the header (with Q shortcut). Its accessible
 
 ## Skills and favicon — 23 October 2026
 Use the existing transparent portrait as the PNG favicon and touch icon, explicitly linked in index.html with a cache version. Tools includes Visual Studio Code alongside Excel and Word. Web Development explicitly includes HTML, CSS, React, Next.js and Tailwind CSS with locally stored SVG logos. These skills are directly confirmed by the user, separate from the CV-derived skills.
+
+## Wedding project — 25 October 2026
+Wedding Digital Invitation Web uses the existing project gallery component with real opening, homepage, and event screenshots. Public runtime confirms Next.js. RSVP responses are a browser-local demo.
+
+Wedding Digital Invitation Web Ver.2 uses the shared gallery and per-project technology labels (HTML, CSS, JavaScript). Existing projects retain their Next.js and React labels.
