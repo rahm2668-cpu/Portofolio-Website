@@ -19,3 +19,5 @@ Projects also includes Wedding Digital Invitation Web at https://digital-invitat
 Wedding Digital Invitation Web Ver.2 links to https://felix-rahmawati-wedding.vercel.app/ with real cover, homepage, and gallery screenshots. Its technology labels are HTML, CSS, and JavaScript.
 
 Footer About Me now uses the user's short front-end developer bio, with that role emphasized. Home retains the CV profile. Motion follows enji.dev's staggered x:-32 entrances and silhouette-to-photo reveal; trace Rahmawan's own alpha silhouette and preserve his original face. Every page has viewport reveals, reduced-motion support, and working Quick Access/Focus.
+
+Projects includes SapaTamu - Digital Guestbook (https://sapatamu-eight.vercel.app/) with public portal/recovery screenshots, verified Next.js and React logos, and an honest authorized-dashboard access note. Projects and Experience have a shared Enji-inspired sticky table of contents: scroll-spy highlight, animated scroll-to-top after 200px, native anchor links, 112px scroll offsets, and a collapsible mobile version. Preserve reduced-motion and keyboard access.

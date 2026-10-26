@@ -20,7 +20,11 @@ The greeting, name, profile, and actions enter in sequence. A line traces my por
 
 ### Projects
 
-![Projects page featuring Wedding Digital Invitation Web Ver.2](docs/media/projects.png)
+![Projects page featuring SapaTamu and an animated table of contents](docs/media/projects-contents.png)
+
+### Experience navigation
+
+![Experience page with work, organization, and education contents](docs/media/experience-contents.png)
 
 ### Skills and contact
 
@@ -45,6 +49,8 @@ The original **enji.dev** website, visual design, and reference implementation w
 - Original documentation: [Enji's README](https://github.com/enjidev/enji.dev/blob/main/README.md)
 - Motion references: [HeaderTitle](https://github.com/enjidev/enji.dev/blob/main/apps/enji.dev/src/contents/index/Header/HeaderTitle.tsx), [HeaderImage](https://github.com/enjidev/enji.dev/blob/main/apps/enji.dev/src/contents/index/Header/HeaderImage.tsx), and [PageHeader](https://github.com/enjidev/enji.dev/blob/main/apps/enji.dev/src/components/PageHeader.tsx).
 
+The table of contents also follows Enji's [TableOfContents](https://github.com/enjidev/enji.dev/blob/main/apps/enji.dev/src/components/TableOfContents.tsx) and [WithTableOfContents](https://github.com/enjidev/enji.dev/blob/main/apps/enji.dev/src/components/layouts/WithTableOfContents.tsx) references.
+
 The local React implementation, Rahmawan-specific content, project galleries, responsive fixes, and motion adaptation are maintained in this repository. Enji's original application uses Next.js, TypeScript, Framer Motion, Tailwind CSS, and MDX. **This separate adaptation uses React, Vite, JavaScript, and CSS**, rather than the original Next.js monorepo.
 
 ## What I changed
@@ -59,7 +65,8 @@ The local React implementation, Rahmawan-specific content, project galleries, re
 | Social links | Replaced X/Twitter with my LinkedIn, restored my GitHub link, and removed the Figma social link. |
 | Resume and experience | Added my CV, education, work experience, organizational involvement, and certifications. |
 | Skills and tools | Added HTML, CSS, React, Next.js, Tailwind CSS, Visual Studio Code, Microsoft Excel, and Microsoft Word with local icons. |
-| Projects | Added four personal projects with descriptions, technology labels, live links, and three real screenshots per gallery. |
+| Projects | Added five personal projects with descriptions, technology logos, live links, and real screenshot galleries. SapaTamu includes two public-portal screenshots; the other galleries each include three. |
+| Table of contents | Added sticky navigation to Projects and Experience, smooth section links, an animated active marker, a scroll-to-top reveal, and a collapsible mobile menu. |
 | Motion | Added staggered entrances on every page, on-scroll section reveals, a greeting spring, and an outline-to-photo reveal following Enji's sequence. |
 | Accessibility | Preserved keyboard navigation, visible focus, swipe/button gallery controls, reduced-motion handling, and Quick Access. |
 
@@ -67,10 +74,11 @@ The homepage profile remains based on my CV; the short developer biography appea
 
 ## Featured projects
 
-1. **[Wedding Digital Invitation Web Ver.2](https://felix-rahmawati-wedding.vercel.app/)** — personalized Felix and Rahma invitation with a curtain opening, couple introduction, sliding gallery, and RSVP form. HTML, CSS, JavaScript.
-2. **[Wedding Digital Invitation Web](https://digital-invitation-wedding-pink-mar.vercel.app/)** — interactive invitation, story timeline, countdown, gallery, and browser-local RSVP demo. Next.js and React.
-3. **[Kayarra Resort Hotel Website](https://kayarra-official-website.vercel.app/)** — resort accommodation, facilities, photo galleries, and reservation inquiries. Next.js and React.
-4. **[OTA Management System Hotel](https://kayarra-ota-management-system.vercel.app/)** — hotel operations portfolio demo with reservations, rates, inventory, and revenue overviews using fictional sample data. Next.js and React.
+1. **[SapaTamu - Digital Guestbook](https://sapatamu-eight.vercel.app/)** — event guestbook portal presenting QR check-in, a shared attendance dashboard, separate admin/crew access, remember-me sign-in, password visibility, and owner-guided recovery. Next.js and React. Dashboard access requires an authorized event account; the gallery shows the public sign-in portal and recovery guide.
+2. **[Wedding Digital Invitation Web Ver.2](https://felix-rahmawati-wedding.vercel.app/)** — personalized Felix and Rahma invitation with a curtain opening, couple introduction, sliding gallery, and RSVP form. HTML, CSS, JavaScript.
+3. **[Wedding Digital Invitation Web](https://digital-invitation-wedding-pink-mar.vercel.app/)** — interactive invitation, story timeline, countdown, gallery, and browser-local RSVP demo. Next.js and React.
+4. **[Kayarra Resort Hotel Website](https://kayarra-official-website.vercel.app/)** — resort accommodation, facilities, photo galleries, and reservation inquiries. Next.js and React.
+5. **[OTA Management System Hotel](https://kayarra-ota-management-system.vercel.app/)** — hotel operations portfolio demo with reservations, rates, inventory, and revenue overviews using fictional sample data. Next.js and React.
 
 Project technology labels describe the linked projects, separately from this portfolio's own stack.
 
@@ -114,6 +122,8 @@ The production files are written to `app/dist/client`. The build also prepares t
 ```text
 app/src/
   Replica.jsx          Pages, header, footer, and screenshot galleries
+  TableOfContents.jsx  Shared scroll-spy navigation and mobile contents menu
+  contents.css         Sticky contents card, active marker, and responsive states
   Motion.jsx           Shared content reveals and original portrait
   motion.css           Hand, silhouette, photo, and reduced-motion effects
   QuickAccess.jsx      Theme and Focus dialog
@@ -121,7 +131,7 @@ app/src/
   replica.css          Theme tokens, layout, and responsive styling
 app/public/assets/
   profile/             Resume PDF and portrait assets
-  projects/            Actual screenshots of the four linked projects
+  projects/            Actual screenshots of the five linked projects
 docs/media/            README screenshots and animation recording
 ```
 
