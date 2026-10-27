@@ -24,6 +24,8 @@ The greeting, name, profile, and actions enter in sequence. A line traces my por
 
 ![Current SapaTamu demo gallery inside the portfolio](docs/media/sapatamu-gallery.png)
 
+![Project image viewer with keyboard navigation](docs/media/project-lightbox.png)
+
 ### Experience navigation
 
 ![Experience page with work, organization, and education contents](docs/media/experience-contents.png)
@@ -92,11 +94,12 @@ Project technology labels describe the linked projects, separately from this por
 - Theme-aware Tailwind tokens adapt the existing black/navy and light-mode CSS variables.
 - CSS variables, responsive utility classes, local Plus Jakarta Sans fonts, and SVG icons.
 - Archived reference layout CSS is no longer loaded; local font declarations are isolated in `fonts.css`.
-- Native Web Animations API for content entrances; IntersectionObserver for viewport reveals.
+- Motion (mini engine) for content entrances and left-to-right destination-heading pops with a traveling light/electric streak; IntersectionObserver for viewport reveals.
+- Motion for React for gallery crossfades and an enlarged-image viewer with keyboard controls.
 - CSS and SVG for the hand spring, silhouette draw, and photo fade.
 - Vercel hosting with an SPA fallback for direct page URLs.
 
-No extra animation framework is required. With `prefers-reduced-motion: reduce`, entrance effects are skipped and the portrait appears immediately. Page content is visible by default, so readability does not depend on a scroll observer firing.
+Motion powers the shared animation system. With `prefers-reduced-motion: reduce`, entrance effects and gallery movement are skipped, the portrait appears immediately, and destination headings use a static temporary highlight. Page content is visible by default, so readability does not depend on a scroll observer firing.
 
 ## Run locally
 
@@ -134,6 +137,8 @@ app/src/
   TableOfContents.jsx  Shared scroll-spy navigation and mobile contents menu
   contents.css         Sticky contents card, active marker, and responsive states
   Motion.jsx           Shared content reveals and original portrait
+  ProjectGallery.jsx   Animated carousel and accessible enlarged-image viewer
+  gallery.css          Image viewer and destination-highlight styling
   motion.css           Hand, silhouette, photo, and reduced-motion effects
   QuickAccess.jsx      Theme and Focus dialog
   portfolio-data.js    CV content and project information

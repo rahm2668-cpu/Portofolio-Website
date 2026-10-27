@@ -1,7 +1,8 @@
 import {useLayoutEffect,useState} from 'react';
+import {animate} from 'motion/mini';
 
 // Enji's header uses x:-32 / opacity:0 with 0.1s staggered entrances.
-// Native animations keep content readable when JavaScript or motion is disabled.
+// Motion's mini engine keeps the existing native-browser entrance sequence.
 export function usePageMotion(focus) {
   useLayoutEffect(() => {
     const preference = matchMedia('(prefers-reduced-motion: reduce)');
@@ -9,12 +10,11 @@ export function usePageMotion(focus) {
     let observer;
     const reveal = (node, delay = 0) => {
       if (preference.matches || !node.isConnected) return;
-      const animation = node.animate([
-        {opacity: 0, transform: 'translateX(-32px)'},
-        {opacity: 1, transform: 'translateX(0)'},
-      ], {duration: 650, delay, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards'});
+      const animation = animate(node, {
+        opacity:[0,1],transform:['translateX(-32px)','translateX(0px)'],
+      }, {duration:.65,delay:delay/1000,ease:[.16,1,.3,1]});
       running.add(animation);
-      animation.finished.then(() => running.delete(animation), () => running.delete(animation));
+      Promise.resolve(animation).then(() => running.delete(animation), () => running.delete(animation));
     };
     const stop = () => {
       observer?.disconnect();

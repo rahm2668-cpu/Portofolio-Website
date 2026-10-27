@@ -1,4 +1,5 @@
 import {useEffect,useLayoutEffect,useRef,useState} from 'react';
+import {animate} from 'motion/mini';
 
 // Based on enji.dev's TableOfContents: sticky card, scroll-spy highlight,
 // and a scroll-to-top control entering from x:16 after 200px of scrolling.
@@ -8,20 +9,69 @@ export function TableOfContents({items}) {
   const [open,setOpen] = useState(false);
   const [marker,setMarker] = useState({top:0,height:0});
   const list = useRef(null);
+  const flash = useRef({frame:0,timer:0,animation:null,label:null});
+
+  const clearFlash = () => {
+    cancelAnimationFrame(flash.current.frame);
+    clearTimeout(flash.current.timer);
+    flash.current.animation?.cancel();
+    flash.current.label?.classList.remove('toc-arrival');
+    if(flash.current.label) delete flash.current.label.dataset.tocArriving;
+    flash.current={frame:0,timer:0,animation:null,label:null};
+  };
+  useEffect(()=>()=>clearFlash(),[]);
+
+  const highlightArrival = target => {
+    const label=target.matches('h2,h3')?target:target.querySelector('h2,h3');
+    if(!label || !target.isConnected) return;
+    flash.current.label=label;
+    const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let previous=Infinity,stable=0;
+    const deadline=performance.now()+1800;
+    const arrive=()=>{
+      const top=target.getBoundingClientRect().top;
+      stable=Math.abs(top-previous)<.5?stable+1:0;
+      previous=top;
+      if(!reduced&&stable<6&&performance.now()<deadline){flash.current.frame=requestAnimationFrame(arrive);return;}
+      if(reduced){
+        label.classList.add('toc-arrival');
+        label.dataset.tocArriving='true';
+        flash.current.timer=setTimeout(()=>{label.classList.remove('toc-arrival');delete label.dataset.tocArriving;},1600);
+        return;
+      }
+      const style=getComputedStyle(label),root=getComputedStyle(document.documentElement);
+      const surface=root.getPropertyValue('--surface-hover').trim();
+      const accent=root.getPropertyValue('--accent').trim();
+      label.dataset.tocArriving='true';
+      const animation=animate(label,{
+        transform:['translateX(-24px) scale(.97)','translateX(4px) scale(1.018)','translateX(0px) scale(1)','translateX(0px) scale(1)'],
+        opacity:[.5,1,1,1],
+        color:[accent,accent,accent,style.color],
+        textShadow:['0 0 0px transparent',`0 0 20px ${accent}`,`0 0 8px ${accent}`,'0 0 0px transparent'],
+        backgroundColor:[surface,surface,surface,style.backgroundColor],
+        boxShadow:[`0 0 0 7px ${surface}`,`0 0 0 7px ${surface}`,`0 0 0 4px ${surface}`,'0 0 0 0px transparent'],
+      },{duration:1.8,times:[0,.32,.52,1],ease:[.16,1,.3,1]});
+      flash.current.animation=animation;
+      Promise.resolve(animation).then(()=>{if(flash.current.animation===animation){animation.cancel();delete label.dataset.tocArriving;flash.current.animation=null;}});
+    };
+    flash.current.frame=requestAnimationFrame(arrive);
+  };
 
   const goToSection = (event,id) => {
     if(event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const target=document.getElementById(id);
     if(!target) return;
+    clearFlash();
     event.preventDefault();
     setActive(id);
     if(matchMedia('(max-width: 1023px)').matches) setOpen(false);
     if(location.hash!=='#'+id) history.pushState(null,'','#'+id);
     // Move focus without the browser's implicit centering, then scroll after
     // the mobile menu collapses so keyboard and pointer navigation agree.
-    requestAnimationFrame(()=>{
+    flash.current.frame=requestAnimationFrame(()=>{
       target.focus({preventScroll:true});
       target.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+      highlightArrival(target);
     });
   };
 

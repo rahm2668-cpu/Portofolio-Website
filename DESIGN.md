@@ -41,3 +41,8 @@ SapaTamu now exposes a public demo. Four current screenshots show summary, guest
 | Preserve original layout and motion | Replica.jsx, contents.css, Motion.jsx | Keep custom components and motion; Tailwind handles shared text and responsive grids. |
 | Local fonts | fonts.css and existing local woff2 files | Stop loading archived layout CSS to remove conflicting resets. |
 | Honest project screenshots | portfolio-data.js and SapaTamu public demo | Replace login/recovery slides with four actual dashboard/workflow captures. |
+
+## Motion and destination feedback — 27 October 2026
+Motion mini owns the established 650ms/100ms staggered entrances and temporary TOC heading feedback. TOC targets flash theme-aware navy/accent color after scrolling settles, then restore their underlying style; repeat clicks restart the feedback and reduced motion uses a static highlight. Motion for React owns gallery crossfades and the enlarged-image dialog. The native modal provides focus containment, Escape dismissal, scroll lock, keyboard arrows, and focus restoration. Preserve the existing portrait SVG sequence and all theme/Quick Access behavior.
+
+TOC arrival refinement (28 October 2026): the heading enters from x:-24 with a restrained scale overshoot, a single traveling cyan/white shine and electric-line sweep, then fades to normal. No repeated flashing; reduced motion uses the existing static highlight.
