@@ -1,0 +1,12 @@
+from pathlib import Path
+p=Path('README.md')
+s=p.read_text(encoding='utf-8')
+s=s.replace('![Projects page featuring Wedding Digital Invitation Web Ver.2](docs/media/projects.png)', '![Projects page featuring SapaTamu and an animated table of contents](docs/media/projects-contents.png)\n\n### Experience navigation\n\n![Experience page with work, organization, and education contents](docs/media/experience-contents.png)')
+s=s.replace('The local React implementation,', 'The table of contents also follows Enji\'s [TableOfContents](https://github.com/enjidev/enji.dev/blob/main/apps/enji.dev/src/components/TableOfContents.tsx) and [WithTableOfContents](https://github.com/enjidev/enji.dev/blob/main/apps/enji.dev/src/components/layouts/WithTableOfContents.tsx) references.\n\nThe local React implementation,')
+s=s.replace('Added four personal projects with descriptions, technology labels, live links, and three real screenshots per gallery.', 'Added five personal projects with descriptions, technology logos, live links, and real screenshot galleries. SapaTamu includes two public-portal screenshots; the other galleries each include three.')
+s=s.replace('| Motion |', '| Table of contents | Added sticky navigation to Projects and Experience, smooth section links, an animated active marker, a scroll-to-top reveal, and a collapsible mobile menu. |\n| Motion |')
+s=s.replace('1. **[Wedding', '2. **[Wedding',1).replace('2. **[Wedding Digital Invitation Web]','3. **[Wedding Digital Invitation Web]').replace('3. **[Kayarra','4. **[Kayarra').replace('4. **[OTA','5. **[OTA')
+s=s.replace('## Featured projects\n\n','## Featured projects\n\n1. **[SapaTamu - Digital Guestbook](https://sapatamu-eight.vercel.app/)** — event guestbook portal presenting QR check-in, a shared attendance dashboard, separate admin/crew access, remember-me sign-in, password visibility, and owner-guided recovery. Next.js and React. Dashboard access requires an authorized event account; the gallery shows the public sign-in portal and recovery guide.\n')
+s=s.replace('  Motion.jsx           Shared', '  TableOfContents.jsx  Shared scroll-spy navigation and mobile contents menu\n  contents.css         Sticky contents card, active marker, and responsive states\n  Motion.jsx           Shared')
+s=s.replace('Actual screenshots of the four linked projects','Actual screenshots of the five linked projects')
+p.write_text(s,encoding='utf-8')
