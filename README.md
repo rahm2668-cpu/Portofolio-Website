@@ -90,6 +90,7 @@ Project technology labels describe the linked projects, separately from this por
 ## Tech stack
 
 - React 19, JavaScript, and Vite 6.
+- Headless UI for accessible dialogs and theme/Focus switches; Goober for shared preference-control styling.
 - Tailwind CSS 4 with `@tailwindcss/vite`, plus `@tailwindcss/typography` for shared readable content.
 - Theme-aware Tailwind tokens adapt the existing black/navy and light-mode CSS variables.
 - CSS variables, responsive utility classes, local Plus Jakarta Sans fonts, and SVG icons.
@@ -97,9 +98,20 @@ Project technology labels describe the linked projects, separately from this por
 - Motion (mini engine) for content entrances and left-to-right destination-heading pops with a traveling light/electric streak; IntersectionObserver for viewport reveals.
 - Motion for React for gallery crossfades and an enlarged-image viewer with keyboard controls.
 - CSS and SVG for the hand spring, silhouette draw, and photo fade.
-- Vercel hosting with an SPA fallback for direct page URLs.
+- Static per-route Open Graph/Twitter metadata, a 1200×630 original-photo social image, and canonical URLs.
+- Fetch Priority hints for critical images and fonts; secondary screenshots stay lazy/low priority.
+- Google Tag Manager container `GTM-PJB889NW`, injected only by production builds.
+- Vercel hosting with explicit metadata-page rewrites and an SPA fallback for other URLs.
 
 Motion powers the shared animation system. With `prefers-reduced-motion: reduce`, entrance effects and gallery movement are skipped, the portrait appears immediately, and destination headings use a static temporary highlight. Page content is visible by default, so readability does not depend on a scroll observer firing.
+
+## Social previews and tracking
+
+![Open Graph preview with Rahmawan’s original photograph](app/public/assets/social/rahmawan-og.jpg)
+
+`app/site.config.mjs` holds the public site URL, per-page titles/descriptions, image path, and GTM container ID. `npm run build` produces raw HTML for all five routes, so link-preview crawlers do not need JavaScript. The actual GTM container is available from Google (HTTP 200 verified during setup). `npm run dev` omits GTM; production builds include the asynchronous loader and noscript fallback. Publishing tags remains controlled in the owner’s GTM workspace.
+
+The homepage portrait and the first project screenshot receive high fetch priority. Other gallery images stay lazy/low priority until selected; the enlarged image viewer fetches its visible image eagerly.
 
 ## Run locally
 
@@ -121,6 +133,7 @@ Run these inside `app`:
 ```sh
 npm run build
 npm run test:sites
+npm run test:metadata
 npm run preview -- --port 4173
 ```
 
@@ -140,10 +153,16 @@ app/src/
   ProjectGallery.jsx   Animated carousel and accessible enlarged-image viewer
   gallery.css          Image viewer and destination-highlight styling
   motion.css           Hand, silhouette, photo, and reduced-motion effects
-  QuickAccess.jsx      Theme and Focus dialog
+  QuickAccess.jsx      Headless UI theme and Focus dialog
+  ui-styles.js         Goober styles for Headless UI switches
   portfolio-data.js    CV content and project information
   replica.css          Theme tokens, layout, and responsive styling
+app/site.config.mjs    Public metadata, canonical origin, and GTM ID
+app/scripts/
+  page-head.mjs        Social metadata and production GTM HTML
+  generate-pages.mjs   Static HTML entries for link-preview crawlers
 app/public/assets/
+  social/              Original-photo Open Graph JPEG
   profile/             Resume PDF and portrait assets
   projects/            Actual screenshots of the five linked projects
 docs/media/            README screenshots and animation recording

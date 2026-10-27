@@ -59,7 +59,7 @@ export function Portrait() {
       <svg className="portrait-outline" viewBox="0 0 1165 1350" fill="none" aria-hidden="true">
         <use href="/assets/profile/rahmawan-outline.svg#silhouette"/>
       </svg>
-      <img className="portrait" src="/assets/profile/rahmawan-original.png" alt="Portrait of Rahmawan" width="1165" height="1350" fetchPriority="high" onLoad={()=>setReady(true)} onError={()=>setReady(true)}/>
+      <img className="portrait" src="/assets/profile/rahmawan-original.png" alt="Portrait of Rahmawan" width="1165" height="1350" fetchPriority="high" loading="eager" decoding="async" onLoad={()=>setReady(true)} onError={()=>setReady(true)}/>
     </div>
     <span className="portrait-caption">RAHMAWAN<span>Management · Administration · Hospitality</span></span>
   </div>;

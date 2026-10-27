@@ -5,8 +5,9 @@
   .gallery-zoom{position:absolute;right:14px;bottom:14px;padding:8px 12px;border-radius:8px;border:1px solid #ffffff38;background:#05070be6;color:#f4f7fb;font-size:11px;line-height:1.5;opacity:.85;transition:opacity .2s,transform .2s}
   .gallery-expand:hover .gallery-zoom,.gallery-expand:focus-visible .gallery-zoom{opacity:1;transform:translateY(-2px)}
   .image-viewer{position:fixed;inset:0;width:100vw;height:100dvh;max-width:none;max-height:none;margin:0;padding:24px;background:var(--page-bg);color:var(--text);border:0;overflow:hidden}
-  .image-viewer[open]{display:flex;flex-direction:column;gap:18px}
-  .image-viewer::backdrop{background:#05070be6;backdrop-filter:blur(12px)}
+  .quick-root{position:relative;z-index:2000}
+  .image-viewer-root{position:fixed;inset:0;z-index:2100}
+  .image-viewer[data-open]{display:flex;flex-direction:column;gap:18px}
   .viewer-header,.viewer-footer{width:100%;max-width:1440px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-shrink:0}
   .viewer-header h2{font-size:17px;font-weight:750;line-height:1.5;text-wrap:balance}
   .viewer-header>button{width:44px;height:44px;border:1px solid var(--line);border-radius:10px;background:var(--surface-hover);font-size:28px;flex-shrink:0}
