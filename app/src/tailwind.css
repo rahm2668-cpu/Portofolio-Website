@@ -1,0 +1,48 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities) source(none);
+@source "./";
+@plugin "@tailwindcss/typography";
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* The existing theme variables own both palettes. Tailwind is their adapter. */
+@theme inline {
+  --color-page: var(--page-bg);
+  --color-panel: var(--surface);
+  --color-panel-hover: var(--surface-hover);
+  --color-divider: var(--line);
+  --color-ink: var(--text);
+  --color-soft: var(--muted);
+  --color-highlight: var(--accent);
+  --font-portfolio: var(--font-sans);
+}
+
+/* Theme-aware Typography colors, shared by every long-form text block. */
+.portfolio-prose {
+  --tw-prose-body: var(--muted);
+  --tw-prose-headings: var(--text);
+  --tw-prose-lead: var(--muted);
+  --tw-prose-links: var(--accent);
+  --tw-prose-bold: var(--text);
+  --tw-prose-counters: var(--muted);
+  --tw-prose-bullets: var(--accent);
+  --tw-prose-hr: var(--line);
+  --tw-prose-quotes: var(--text);
+  --tw-prose-quote-borders: var(--line);
+  --tw-prose-captions: var(--muted);
+  --tw-prose-code: var(--accent);
+}
+.portfolio-prose :where(p, ul, li) {
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+@layer base {
+  html { scrollbar-gutter: stable; }
+  body { font-synthesis: none; }
+  a, button { cursor: pointer; }
+  button:disabled { cursor: not-allowed; }
+  ::selection { background: var(--button); color: #fff; }
+}

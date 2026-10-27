@@ -1,3 +1,4 @@
+@layer components {
 .page-main.has-contents>.page-title{max-width:calc(100% - 320px)}
 .contents-layout{display:grid;grid-template-columns:minmax(0,1fr) 272px;gap:48px;align-items:start}
 .contents-main{min-width:0;border-left:1px solid var(--line);padding-left:28px}
@@ -37,3 +38,5 @@
   .toc-body.is-open{display:block;animation:menu-in .2s ease-out}
 }
 @media(prefers-reduced-motion:reduce){.toc-marker,.toc-top{transition:none}.toc-body.is-open{animation:none}}
+
+}

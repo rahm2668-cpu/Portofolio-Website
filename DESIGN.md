@@ -31,3 +31,13 @@ Motion follows the public enji.dev HeaderTitle/PageHeader timing: x:-32 to 0, op
 
 ## Guestbook and contents navigation — 26 October 2026
 SapaTamu shows its public organizer sign-in and recovery guide. QR check-in, shared attendance dashboard and admin/crew access are presented by the source portal; authenticated operations are not claimed as tested. Next.js/React are verified from its public runtime. Projects and Experience share TableOfContents.jsx and contents.css. Desktop uses a sticky right-hand card modeled on Enji's TOC, with a moving active marker and x:16/opacity scroll-to-top entrance after 200px. Mobile uses a collapsible inline card after the page title. Native hashes, focusable anchor targets, 112px offsets, and reduced motion preserve navigation accessibility.
+
+## Tailwind typography and SapaTamu refresh — 27 October 2026
+The portfolio remains a brand/content site for recruiters: retain the black/navy identity, Plus Jakarta Sans, original portrait reveal, and Enji credit. Tailwind CSS 4 runs through @tailwindcss/vite; the official Typography plugin and shared Prose.jsx own long-form rhythm. Body copy is 15px on phones / 16px from 640px with 1.8 line height; narrative blocks use 65–68ch maximum widths, headings use balance, and paragraphs use pretty wrapping. Feature lists use one column on phones and two from 640px. Runtime CSS variables in replica.css remain canonical (Model B): --page-bg, --surface, --surface-hover, --line, --text, --muted, --accent map to Tailwind page/panel/panel-hover/divider/ink/soft/highlight via @theme inline. Typography colors adapt these same variables; theme changes do not duplicate palettes. Custom layout rules live in the components layer, below utility classes; motion.css retains bespoke SVG effects. Archived reference layout CSS is no longer loaded: fonts.css contains only the existing local Jakarta font declarations.
+SapaTamu now exposes a public demo. Four current screenshots show summary, guest list, QR check-in reception, and seating plan with fictional event data. The gallery preserves the screenshots' 1526/635 aspect ratio. Feature copy describes visible workflow modules; no real guest records or personal account credentials are published.
+
+| Maintained rule | Runtime evidence | Migration decision |
+| --- | --- | --- |
+| Preserve original layout and motion | Replica.jsx, contents.css, Motion.jsx | Keep custom components and motion; Tailwind handles shared text and responsive grids. |
+| Local fonts | fonts.css and existing local woff2 files | Stop loading archived layout CSS to remove conflicting resets. |
+| Honest project screenshots | portfolio-data.js and SapaTamu public demo | Replace login/recovery slides with four actual dashboard/workflow captures. |

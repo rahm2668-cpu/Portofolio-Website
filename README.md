@@ -2,7 +2,7 @@
 
 [Live website](https://portofolio-website-sigma-liart.vercel.app/) · [Source code](https://github.com/rahm2668-cpu/Portofolio-Website) · [LinkedIn](https://www.linkedin.com/in/rahmawan-9a3395215/)
 
-![React 19](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black) ![Vite 6](https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black) ![Vercel](https://img.shields.io/badge/Hosted_on-Vercel-000000?logo=vercel&logoColor=white)
+![React 19](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black) ![Vite 6](https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black) ![Tailwind CSS 4](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white) ![Vercel](https://img.shields.io/badge/Hosted_on-Vercel-000000?logo=vercel&logoColor=white)
 
 My personal portfolio for front-end projects, professional experience, skills, and contact information. Personalized by **Rahmawan**, with a black/navy palette, my own biography and original portrait, and real project screenshots.
 
@@ -21,6 +21,8 @@ The greeting, name, profile, and actions enter in sequence. A line traces my por
 ### Projects
 
 ![Projects page featuring SapaTamu and an animated table of contents](docs/media/projects-contents.png)
+
+![Current SapaTamu demo gallery inside the portfolio](docs/media/sapatamu-gallery.png)
 
 ### Experience navigation
 
@@ -51,7 +53,7 @@ The original **enji.dev** website, visual design, and reference implementation w
 
 The table of contents also follows Enji's [TableOfContents](https://github.com/enjidev/enji.dev/blob/main/apps/enji.dev/src/components/TableOfContents.tsx) and [WithTableOfContents](https://github.com/enjidev/enji.dev/blob/main/apps/enji.dev/src/components/layouts/WithTableOfContents.tsx) references.
 
-The local React implementation, Rahmawan-specific content, project galleries, responsive fixes, and motion adaptation are maintained in this repository. Enji's original application uses Next.js, TypeScript, Framer Motion, Tailwind CSS, and MDX. **This separate adaptation uses React, Vite, JavaScript, and CSS**, rather than the original Next.js monorepo.
+The local React implementation, Rahmawan-specific content, project galleries, responsive fixes, and motion adaptation are maintained in this repository. Enji's original application uses Next.js, TypeScript, Framer Motion, Tailwind CSS, and MDX. **This separate adaptation uses React, Vite, JavaScript, Tailwind CSS 4, Tailwind Typography, and custom CSS**, rather than the original Next.js monorepo.
 
 ## What I changed
 
@@ -65,8 +67,9 @@ The local React implementation, Rahmawan-specific content, project galleries, re
 | Social links | Replaced X/Twitter with my LinkedIn, restored my GitHub link, and removed the Figma social link. |
 | Resume and experience | Added my CV, education, work experience, organizational involvement, and certifications. |
 | Skills and tools | Added HTML, CSS, React, Next.js, Tailwind CSS, Visual Studio Code, Microsoft Excel, and Microsoft Word with local icons. |
-| Projects | Added five personal projects with descriptions, technology logos, live links, and real screenshot galleries. SapaTamu includes two public-portal screenshots; the other galleries each include three. |
+| Projects | Added five personal projects with descriptions, technology logos, live links, and real screenshot galleries. SapaTamu includes four current public-demo screenshots; the other galleries each include three. |
 | Table of contents | Added sticky navigation to Projects and Experience, smooth section links, an animated active marker, a scroll-to-top reveal, and a collapsible mobile menu. |
+| Typography | Integrated Tailwind CSS 4 through Vite and the official Typography plugin. Shared Prose styles unify biography, project descriptions, and experience bullets; headings balance, paragraphs wrap naturally, and responsive utility classes control grids and spacing. |
 | Motion | Added staggered entrances on every page, on-scroll section reveals, a greeting spring, and an outline-to-photo reveal following Enji's sequence. |
 | Accessibility | Preserved keyboard navigation, visible focus, swipe/button gallery controls, reduced-motion handling, and Quick Access. |
 
@@ -74,7 +77,7 @@ The homepage profile remains based on my CV; the short developer biography appea
 
 ## Featured projects
 
-1. **[SapaTamu - Digital Guestbook](https://sapatamu-eight.vercel.app/)** — event guestbook portal presenting QR check-in, a shared attendance dashboard, separate admin/crew access, remember-me sign-in, password visibility, and owner-guided recovery. Next.js and React. Dashboard access requires an authorized event account; the gallery shows the public sign-in portal and recovery guide.
+1. **[SapaTamu - Digital Guestbook](https://sapatamu-eight.vercel.app/)** — reception dashboard, searchable guest lists, invitations and RSVP, QR check-in, seating plans, meals, souvenirs, gifts, guest wishes, and reporting controls. Next.js and React. Four screenshots were captured directly from the public demo on 27 October 2026; all displayed guest/event information is sample data.
 2. **[Wedding Digital Invitation Web Ver.2](https://felix-rahmawati-wedding.vercel.app/)** — personalized Felix and Rahma invitation with a curtain opening, couple introduction, sliding gallery, and RSVP form. HTML, CSS, JavaScript.
 3. **[Wedding Digital Invitation Web](https://digital-invitation-wedding-pink-mar.vercel.app/)** — interactive invitation, story timeline, countdown, gallery, and browser-local RSVP demo. Next.js and React.
 4. **[Kayarra Resort Hotel Website](https://kayarra-official-website.vercel.app/)** — resort accommodation, facilities, photo galleries, and reservation inquiries. Next.js and React.
@@ -85,7 +88,10 @@ Project technology labels describe the linked projects, separately from this por
 ## Tech stack
 
 - React 19, JavaScript, and Vite 6.
-- CSS variables, responsive layouts, local Plus Jakarta Sans fonts, and SVG icons.
+- Tailwind CSS 4 with `@tailwindcss/vite`, plus `@tailwindcss/typography` for shared readable content.
+- Theme-aware Tailwind tokens adapt the existing black/navy and light-mode CSS variables.
+- CSS variables, responsive utility classes, local Plus Jakarta Sans fonts, and SVG icons.
+- Archived reference layout CSS is no longer loaded; local font declarations are isolated in `fonts.css`.
 - Native Web Animations API for content entrances; IntersectionObserver for viewport reveals.
 - CSS and SVG for the hand spring, silhouette draw, and photo fade.
 - Vercel hosting with an SPA fallback for direct page URLs.
@@ -121,6 +127,9 @@ The production files are written to `app/dist/client`. The build also prepares t
 
 ```text
 app/src/
+  tailwind.css         Tailwind entry, theme adapter, and Typography colors
+  Prose.jsx            Shared readable paragraphs and lists
+  fonts.css            Local font faces without archived layout rules
   Replica.jsx          Pages, header, footer, and screenshot galleries
   TableOfContents.jsx  Shared scroll-spy navigation and mobile contents menu
   contents.css         Sticky contents card, active marker, and responsive states
@@ -135,7 +144,7 @@ app/public/assets/
 docs/media/            README screenshots and animation recording
 ```
 
-Historical captured files under `app/public/pages` and `app/public/_next` are reference archives. Their original application scripts and analytics are not executed. Do not rerun `capture.mjs` for routine content edits.
+Historical captured files under `app/public/pages` and `app/public/_next` are reference archives. Their original layout stylesheet, application scripts, and analytics are not executed. Existing local font files remain in use. Do not rerun `capture.mjs` for routine content edits.
 
 ## Quick Access
 

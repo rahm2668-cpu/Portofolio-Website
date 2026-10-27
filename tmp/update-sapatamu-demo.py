@@ -1,0 +1,7 @@
+from pathlib import Path
+p=Path('app/src/portfolio-data.js')
+s=p.read_text(encoding='utf-8')
+start=s.index(" {id:'sapatamu'")
+end=s.index("\n",start)
+s=s[:start]+" {id:'sapatamu',title:'SapaTamu - Digital Guestbook',category:'Event management · Digital guestbook',url:'https://sapatamu-eight.vercel.app/',description:'An event reception workspace that brings guest lists, invitations, RSVP, QR check-in, and seating plans together. Organizers can monitor attendance from a shared dashboard, manage guest categories and groups, and coordinate tables, meals, souvenirs, gifts, and guest wishes. A public demo lets visitors explore the reception workflow using fictional event data.',technologies:[['nextjs','Next.js'],['react','React']],features:['Attendance dashboard & arrival charts','Guest search, categories & groups','Invitations & RSVP management','QR check-in & walk-in reception','Interactive table & seating plan','Meal, souvenir & gift tracking','Photo gallery & guest wishes','Reports & Excel export controls'],accessNote:'Screenshots captured from the public demo on 27 October 2026. All event and guest information shown is sample data.',slides:[['sapatamu-dashboard.png','Dashboard · event overview and reception workspace'],['sapatamu-guests.png','Guest list · categories, attendance, and table assignments'],['sapatamu-checkin.png','Check-in · QR reception and walk-in guests'],['sapatamu-tables.png','Seating plan · table capacity and guest allocation']]},"+s[end:]
+p.write_text(s,encoding='utf-8')
