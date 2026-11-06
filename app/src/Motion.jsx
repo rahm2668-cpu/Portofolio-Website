@@ -61,6 +61,6 @@ export function Portrait() {
       </svg>
       <img className="portrait" src="/assets/profile/rahmawan-original.png" alt="Portrait of Rahmawan" width="1165" height="1350" fetchPriority="high" loading="eager" decoding="async" onLoad={()=>setReady(true)} onError={()=>setReady(true)}/>
     </div>
-    <span className="portrait-caption">RAHMAWAN<span>Management · Administration · Hospitality</span></span>
+    <span className="portrait-caption">RAHMAWAN<span>Administration · AI-Native Development</span></span>
   </div>;
 }

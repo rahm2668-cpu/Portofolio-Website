@@ -4,7 +4,11 @@
 
 ![React 19](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black) ![Vite 6](https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black) ![Tailwind CSS 4](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white) ![Vercel](https://img.shields.io/badge/Hosted_on-Vercel-000000?logo=vercel&logoColor=white)
 
-My personal portfolio for front-end projects, professional experience, skills, and contact information. Personalized by **Rahmawan**, with a black/navy palette, my own biography and original portrait, and real project screenshots.
+My personal portfolio as an **Administration | AI-Native Full Stack Developer**, featuring web projects, professional experience, skills, and contact information. Personalized by **Rahmawan**, with a black/navy palette, my own biography and original portrait, and real project screenshots.
+
+The corrected CV supplied on 6 November 2026 is included as the downloadable resume. Skills cover WordPress, VS Code, HTML, CSS, JavaScript, Git, React, Next.js, Tailwind CSS, Vue.js, Framer Motion, and TypeScript. Additional skill logos are from [Simple Icons](https://github.com/simple-icons/simple-icons).
+
+[Anti-Slop](https://github.com/miqdadbadjuber/anti-slop) 3.2.26 is installed as six project-scoped agent skills in `.agents/skills/`; it adds no browser dependency. See `AGENTS.md` for the workflow pointer and `.agents/skills/ANTISLOP-LICENSE` for its license. Installation alone does not audit or rewrite existing code.
 
 ## Preview
 
@@ -64,7 +68,7 @@ The local React implementation, Rahmawan-specific content, project galleries, re
 | Identity | Replaced the visible name, page titles, biography, portrait, favicon, and contact details with Rahmawan's information. |
 | Theme | Changed the black/purple reference palette to black/navy; retained persistent dark and light modes. |
 | Homepage | Kept the personal introduction and actions; removed the original technology and promotional sections below the hero. |
-| About Me | Replaced the lengthy footer profile with a short biography emphasizing **front-end developer**. |
+| About Me | Replaced the lengthy footer profile with a short biography emphasizing **AI-native full stack developer** and an administrative background. |
 | Navigation | Removed Blog, T.I.L, Studio, Services Soon, Learn, and This Site items. Fixed the mobile Work dropdown positioning. |
 | Social links | Replaced X/Twitter with my LinkedIn, restored my GitHub link, and removed the Figma social link. |
 | Resume and experience | Added my CV, education, work experience, organizational involvement, and certifications. |

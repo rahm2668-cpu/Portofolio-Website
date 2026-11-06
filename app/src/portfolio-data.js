@@ -1,4 +1,6 @@
 export const profile = 'Management graduate with experience in administration, document management, data processing, and operational support. Proficient in Microsoft Office and accustomed to working in a detail-oriented, organized, and structured manner. Possess good communication, coordination, and problem-solving skills, with a strong willingness to learn and adapt to new environments. Interested in developing a professional career in administration, hospitality, and related fields.';
+export const professionalTitle = 'Administration | AI-Native Full Stack Developer';
+// Keep the complete LinkedIn URL confirmed by Rahmawan; the CV uses an abbreviated link.
 export const contact = {email:'rahm2668@gmail.com',phone:'+62 878-4311-0141',tel:'+6287843110141',linkedin:'https://www.linkedin.com/in/rahmawan-9a3395215/'};
 export const experience = [
  {company:'Codealpha',role:'Front End Developer Internship',date:'2026',points:['Completed assigned tasks according to instructions and deadlines.','Used work documentation and reported task progress as required.','Developed discipline, time management, and teamwork skills.']},
@@ -11,6 +13,16 @@ export const organizations = [
  {company:'Badan Eksekutif Mahasiswa · Universitas Garut',role:'Ministry of External Relations',date:'2019–2020',points:['Assisted in managing organizational relations with internal and external parties.','Supported coordination activities between student organizations.','Assisted with administrative and organizational tasks.']}
 ];
 export const skills=['Microsoft Excel','Microsoft Word','Data Processing','Administrative Support','Document Management','Communication','Teamwork','Time Management','Attention to Detail','Problem Solving'];
+export const tools = [
+ ['Microsoft Excel','Data input, updates, and processing','excel'],
+ ['Microsoft Word','Administrative documents and reports','word'],
+ ['Visual Studio Code','Code editing and web development','vscode'],
+ ['WordPress','Website content management','wordpress'],
+];
+export const webSkills = [
+ ['HTML','html5'],['CSS','css3'],['JavaScript','javascript'],['Git','git'],['React','react'],
+ ['Next.js','nextjs'],['Tailwind CSS','tailwindcss'],['Vue.js','vuedotjs'],['Framer Motion','framer'],['TypeScript','typescript'],
+];
 export const certificates=[['Marketing','BNSP · 2021'],['PTESOL','The Language Center, Indonesia University of Education · 2021'],['Core Initiative Frontend Project Based Internship Program','Core Initiative · 2026'],['React Web Developer Expert','Dicoding · 2025'],['Financial Literacy','Dicoding · 2025'],['EF SET English Certificate','B2 Upper Intermediate · 2025']];
 export const projects=[
  {id:'sapatamu',imageAspectRatio:'1526 / 635',title:'SapaTamu - Digital Guestbook',category:'Event management · Digital guestbook',url:'https://sapatamu-eight.vercel.app/',description:'An event reception workspace that brings guest lists, invitations, RSVP, QR check-in, and seating plans together. Organizers can monitor attendance from a shared dashboard, manage guest categories and groups, and coordinate tables, meals, souvenirs, gifts, and guest wishes. A public demo lets visitors explore the reception workflow using fictional event data.',technologies:[['nextjs','Next.js'],['react','React']],features:['Attendance dashboard & arrival charts','Guest search, categories & groups','Invitations & RSVP management','QR check-in & walk-in reception','Interactive table & seating plan','Meal, souvenir & gift tracking','Photo gallery & guest wishes','Reports & Excel export controls'],accessNote:'Screenshots captured from the public demo on 27 October 2026. All event and guest information shown is sample data.',slides:[['sapatamu-dashboard.png','Dashboard · event overview and reception workspace'],['sapatamu-guests.png','Guest list · categories, attendance, and table assignments'],['sapatamu-checkin.png','Check-in · QR reception and walk-in guests'],['sapatamu-tables.png','Seating plan · table capacity and guest allocation']]},
