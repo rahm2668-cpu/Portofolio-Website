@@ -11,7 +11,7 @@ export async function handleVisitorsRequest(request) {
   if (request.method === 'POST' && request.headers.get('origin') !== new URL(request.url).origin) {
     return json({error: 'Cross-origin recording is not allowed'}, 403);
   }
-  if (request.body) return json({error: 'Request body is not supported'}, 400);
+  if (request.body && await request.text()) return json({error: 'Request body is not supported'}, 400);
 
   const url = process.env.VISITOR_API_URL;
   const token = process.env.VISITOR_API_TOKEN;

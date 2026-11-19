@@ -37,6 +37,15 @@ test('requests reject unsupported methods, cross-origin writes and request bodie
   assert.equal((await handleVisitorsRequest(request('POST', {}, 'untrusted'))).status, 400);
 });
 
+test('accepts empty POST body streams supplied by the hosting runtime', async t => {
+  mockWorker(t, () => ({total: 0, recent: []}));
+  const req = request('POST', {dnt: '1'}, '');
+  assert.notEqual(req.body, null);
+  const response = await handleVisitorsRequest(req);
+  assert.equal(response.status, 200);
+  assert.deepEqual(await response.json(), {total: 0, recent: []});
+});
+
 test('records country and server time, reusing the 30-minute session cookie after reload', async t => {
   const calls = [];
   mockWorker(t, command => {
