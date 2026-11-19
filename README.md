@@ -73,7 +73,7 @@ The local React implementation, Rahmawan-specific content, project galleries, re
 | Social links | Replaced X/Twitter with my LinkedIn, restored my GitHub link, and removed the Figma social link. |
 | Resume and experience | Added my CV, education, work experience, organizational involvement, and certifications. |
 | Skills and tools | Added HTML, CSS, React, Next.js, Tailwind CSS, Visual Studio Code, Microsoft Excel, and Microsoft Word with local icons. |
-| Projects | Added five personal projects with descriptions, technology logos, live links, and real screenshot galleries. SapaTamu includes four current public-demo screenshots; the other galleries each include three. |
+| Projects | Added six personal projects with descriptions, technology logos, live links, and project galleries. MAJU+ is marked In development and includes its public sign-in page and supplied logo. SapaTamu includes four current public-demo screenshots; the wedding and hotel galleries each include three. |
 | Table of contents | Added sticky navigation to Projects and Experience, smooth section links, an animated active marker, a scroll-to-top reveal, and a collapsible mobile menu. |
 | Typography | Integrated Tailwind CSS 4 through Vite and the official Typography plugin. Shared Prose styles unify biography, project descriptions, and experience bullets; headings balance, paragraphs wrap naturally, and responsive utility classes control grids and spacing. |
 | Motion | Added staggered entrances on every page, on-scroll section reveals, a greeting spring, and an outline-to-photo reveal following Enji's sequence. |
@@ -82,6 +82,8 @@ The local React implementation, Rahmawan-specific content, project galleries, re
 The homepage profile remains based on my CV; the short developer biography appears in the footer. The portrait is an original-photo cutout. The reveal does not generate, reshape, or retouch my face; its SVG follows the photo's alpha silhouette.
 
 ## Featured projects
+
+**[MAJU+ - Human Resource Management System](https://hris-majuplus.vercel.app/login)** - **In development.** A hospitality-focused HR application with planned employee records, shift scheduling and attendance, GPS/selfie clock-in, employee self-service, payroll and PPh 21/BPJS support, reimbursements and loans, recruitment, training, performance reviews, HR analytics, and compliance tracking. This describes planned scope, not a completed release. Gallery includes its public sign-in page captured on 19 November 2026 and the original owner-supplied logo. Authenticated workflows have not been verified. Public runtime confirms Next.js and React.
 
 1. **[SapaTamu - Digital Guestbook](https://sapatamu-eight.vercel.app/)** — reception dashboard, searchable guest lists, invitations and RSVP, QR check-in, seating plans, meals, souvenirs, gifts, guest wishes, and reporting controls. Next.js and React. Four screenshots were captured directly from the public demo on 27 October 2026; all displayed guest/event information is sample data.
 2. **[Wedding Digital Invitation Web Ver.2](https://felix-rahmawati-wedding.vercel.app/)** — personalized Felix and Rahma invitation with a curtain opening, couple introduction, sliding gallery, and RSVP form. HTML, CSS, JavaScript.

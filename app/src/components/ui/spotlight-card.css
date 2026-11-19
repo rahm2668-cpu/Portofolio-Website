@@ -1,0 +1,63 @@
+@layer components {
+  .spotlight-card {
+    --spotlight-color: #88baff;
+    position: relative;
+    isolation: isolate;
+    min-width: 0;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+  }
+
+  .spotlight-card::before,
+  .spotlight-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .25s ease;
+  }
+
+  .spotlight-card::before {
+    background: radial-gradient(320px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%), color-mix(in srgb, var(--spotlight-color) 12%, transparent), transparent 75%);
+  }
+
+  .spotlight-card::after {
+    inset: -1px;
+    padding: 1px;
+    background: radial-gradient(220px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%), var(--spotlight-color), transparent 75%);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+  }
+
+  .spotlight-card:focus-visible::before,
+  .spotlight-card:focus-visible::after,
+  .spotlight-card:has(:focus-visible)::before,
+  .spotlight-card:has(:focus-visible)::after { opacity: 1; }
+
+  :root[data-theme=light] .spotlight-card { --spotlight-color: #326bb0; }
+  .timeline-item.spotlight-card { grid-template-columns: 126px minmax(0, 1fr); gap: 24px; padding: 24px; margin-bottom: 24px; }
+  .education-card { padding: 24px; }
+  .education-card > p { color: var(--muted); line-height: 1.9; }
+  .certificates { gap: 20px; }
+  .certificates .spotlight-card { padding: 24px; }
+
+  @media (hover: hover) and (pointer: fine) {
+    .spotlight-card:hover::before,
+    .spotlight-card:hover::after { opacity: 1; }
+  }
+
+  @media (max-width: 720px) {
+    .timeline-item.spotlight-card { grid-template-columns: 1fr; gap: 12px; padding: 20px; }
+    .education-card, .certificates .spotlight-card { padding: 20px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .spotlight-card::before, .spotlight-card::after { display: none; }
+  }
+  :root[data-focus=true] .spotlight-card::before,
+  :root[data-focus=true] .spotlight-card::after { display: none; }
+}

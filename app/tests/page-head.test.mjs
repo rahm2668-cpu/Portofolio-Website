@@ -29,7 +29,7 @@ test('GTM is production-only, validates IDs, and is inserted once',()=>{
 test('critical image priority is route-specific',()=>{
   assert.match(renderPageHtml(template),/rel="preload" as="image" href="\/assets\/profile\/rahmawan-original\.png" fetchpriority="high"/);
   const projects=renderPageHtml(template,{pathname:'/projects/'});
-  assert.match(projects,/sapatamu-dashboard\.png/);
+  assert.match(projects,/majuplus-login\.jpg/);
   assert.doesNotMatch(projects,/as="image" href="\/assets\/profile/);
   assert.doesNotMatch(renderPageHtml(template,{pathname:'/work/contact'}),/as="image"/);
 });

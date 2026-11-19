@@ -1,0 +1,67 @@
+@layer components {
+  .flame-button {
+    --flame-x: 50%;
+    --flame-edge: 88%;
+    --flame-strength: 0;
+    position: relative;
+    display: inline-flex;
+    isolation: isolate;
+    border-radius: 9999px;
+    color: #5a250a;
+    flex-shrink: 0;
+    text-decoration: none;
+  }
+  .flame-button-glow {
+    position: absolute;
+    z-index: -1;
+    inset: -6px;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(ellipse 44% 85% at var(--flame-edge) 50%, #ffd682 0%, #ff6a2df2 28%, #ff2d5580 50%, #ff2d551f 68%, transparent 80%);
+    filter: blur(7px) saturate(1.4);
+    opacity: 0;
+    transition: opacity 180ms ease-out;
+  }
+  .flame-button-face {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 28px;
+    overflow: hidden;
+    border: 1px solid transparent;
+    border-radius: inherit;
+    background: linear-gradient(100deg, #cfcfcf 0%, #d6d6d6 40%, #e4e2e0 70%, #f0eeec 100%);
+    font-size: 13px;
+    font-weight: 650;
+    letter-spacing: .035em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .flame-button-face::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse 102px 52px at var(--flame-x) 50%, #fffff7 29%, #fffacd 48.5%, #f4d2bf 60.71%, transparent 100%), radial-gradient(circle 60.5px at var(--flame-x) 50%, #fffff5 3.5%, #ff6a2d 26.5%, #ffda9f 37.5%, #ff6a2d80 49%, transparent 92.5%);
+    opacity: 0;
+    transition: opacity 150ms ease-out;
+  }
+  .flame-button-face > * { position: relative; }
+  .flame-button:focus-visible { --flame-strength: .65; }
+  .flame-button:focus-visible .flame-button-face::before { opacity: 1; }
+  .flame-button:focus-visible .flame-button-glow { opacity: var(--flame-strength); }
+  @media (hover: hover) {
+    .flame-button:hover .flame-button-face::before { opacity: 1; }
+    .flame-button:hover .flame-button-glow { opacity: var(--flame-strength); }
+  }
+  @media (max-width: 450px) {
+    .hero .hero-actions { flex-wrap: wrap; gap: 16px; }
+    .flame-button-face { padding-inline: 22px; font-size: 12px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .flame-button-face::before, .flame-button-glow { display: none; }
+  }
+}

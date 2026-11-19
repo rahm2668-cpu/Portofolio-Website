@@ -8,7 +8,7 @@ export const site={
 
 export const pages={
   '/':{title:'Portfolio — Rahmawan',description:'Rahmawan — Administration | AI-Native Full Stack Developer. Explore my web projects, administrative experience, skills, and resume.'},
-  '/projects':{title:'Projects — Rahmawan',description:'Explore Rahmawan’s guestbook, hospitality, and digital wedding invitation projects, with live demos and screenshot galleries.'},
+  '/projects':{title:'Projects — Rahmawan',description:'Explore MAJU+, Rahmawan’s HRIS project in development, alongside guestbook, hospitality, and digital wedding invitation projects.'},
   '/work/experience':{title:'Experience — Rahmawan',description:'Rahmawan’s professional experience, front-end internships, organizational involvement, and education.'},
   '/work/skills-and-tools':{title:'Skills & Tools — Rahmawan',description:'Explore Rahmawan’s skills in React, Next.js, Vue.js, TypeScript, Tailwind CSS, Framer Motion, WordPress, Git, and administration.'},
   '/work/contact':{title:'Contact — Rahmawan',description:'Get in touch with Rahmawan, connect on LinkedIn, and explore his professional background and resume.'},

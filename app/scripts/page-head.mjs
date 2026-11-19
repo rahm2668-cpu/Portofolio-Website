@@ -7,7 +7,7 @@ export function renderPageHtml(html,{pathname='/',production=false,gtmId=site.gt
   const clean=new URL(pathname,'http://local').pathname.replace(/\/$/,'')||'/';
   const route=Object.hasOwn(pages,clean)?clean:'/';
   const page=pages[route],canonical=site.origin+(route==='/'?'/':route),image=site.origin+site.image;
-  const preload=route==='/'?'<link rel="preload" as="image" href="/assets/profile/rahmawan-original.png" fetchpriority="high" />':route==='/projects'?'<link rel="preload" as="image" href="/assets/projects/sapatamu-dashboard.png" fetchpriority="high" />':'';
+  const preload=route==='/'?'<link rel="preload" as="image" href="/assets/profile/rahmawan-original.png" fetchpriority="high" />':route==='/projects'?'<link rel="preload" as="image" href="/assets/projects/majuplus-login.jpg" fetchpriority="high" />':'';
   const metadata=`<title>${escape(page.title)}</title>
     <meta name="description" content="${escape(page.description)}" />
     <link rel="canonical" href="${canonical}" />
