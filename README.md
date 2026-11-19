@@ -59,6 +59,8 @@ The original **enji.dev** website, visual design, and reference implementation w
 
 The table of contents also follows Enji's [TableOfContents](https://github.com/enjidev/enji.dev/blob/main/apps/enji.dev/src/components/TableOfContents.tsx) and [WithTableOfContents](https://github.com/enjidev/enji.dev/blob/main/apps/enji.dev/src/components/layouts/WithTableOfContents.tsx) references.
 
+The homepage name animation adapts [Doodle Crew Footer by @kedhareswer](https://21st.dev/?preview=//@kedhareswer/components/doodle-crew-footer).
+
 The local React implementation, Rahmawan-specific content, project galleries, responsive fixes, and motion adaptation are maintained in this repository. Enji's original application uses Next.js, TypeScript, Framer Motion, Tailwind CSS, and MDX. **This separate adaptation uses React, Vite, JavaScript, Tailwind CSS 4, Tailwind Typography, and custom CSS**, rather than the original Next.js monorepo.
 
 ## What I changed

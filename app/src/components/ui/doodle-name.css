@@ -1,0 +1,54 @@
+@layer components {
+  .doodle-name{--dcf-bg:var(--page-bg);--dcf-ink:var(--accent);--dcf-accent:#ff8a3d;position:relative;display:inline-block;white-space:nowrap;isolation:isolate;line-height:1;letter-spacing:0}
+  .doodle-svg{display:block;width:100%;overflow:visible;user-select:none}
+  .doodle-svg text{fill:var(--dcf-ink)}
+  .doodle-name .dcf-art{fill:var(--dcf-bg);stroke:var(--dcf-ink);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+  .doodle-name .dcf-art .n{fill:none}
+  .doodle-name .dcf-art .k{fill:var(--dcf-ink)}
+  .doodle-name .dcf-art .a{fill:var(--dcf-accent)}
+  .doodle-name .dcf-art .o{fill:#ff9f1c}
+  .doodle-name .dcf-art .r{fill:#ff4d4d}
+  .doodle-name .dcf-art .thin{stroke-width:1.5}
+  .doodle-name .dcf-art .thick{stroke-width:3.4}
+  .doodle-name .dcf-art .dcf-shadow{fill:var(--dcf-ink);stroke:none;opacity:.14}
+  .doodle-name .dcf-hit{fill:transparent;stroke:none;cursor:pointer;outline:none;touch-action:manipulation}
+  .doodle-name .dcf-hit:focus-visible{stroke:var(--dcf-ink);stroke-width:2.5;stroke-dasharray:6 6;outline:none}
+  .doodle-name .dcf-glyph,.doodle-name .dcf-letter,.doodle-name .dcf-arrive{transform-box:fill-box;transform-origin:50% 100%}
+  .doodle-name .dcf-letter{animation:dcf-stamp .62s cubic-bezier(.2,.8,.25,1.15) var(--d) both}
+  .doodle-name .dcf-dust{fill:none;stroke:var(--dcf-ink);stroke-width:3;stroke-linecap:round;opacity:0;animation:dcf-dust .5s ease-out calc(var(--d) + .22s) both}
+  .doodle-name .dcf-arrive-front{animation:dcf-rise-up .75s cubic-bezier(.3,1.5,.5,1) var(--d) both}
+  .doodle-name .dcf-arrive-top{animation:dcf-plop .8s cubic-bezier(.3,.9,.4,1) var(--d) both}
+  .doodle-name .dcf-arrive-behind{animation:dcf-peek .9s cubic-bezier(.3,1.4,.5,1) var(--d) both}
+  .doodle-name .dcf-art.dcf-bob{animation:dcf-bob 3.2s ease-in-out infinite}
+  .doodle-name .dcf-art.dcf-sway{transform-box:fill-box;transform-origin:50% 100%;animation:dcf-swing 4s ease-in-out infinite}
+  .doodle-name .dcf-art.dcf-peck{transform-box:fill-box;transform-origin:50% 100%;animation:dcf-peck 5.5s ease-in-out infinite}
+  .doodle-name .dcf-tail{transform-box:fill-box;transform-origin:0% 100%;animation:dcf-tail 2.8s ease-in-out infinite}
+  .doodle-svg[data-offscreen] :is(.dcf-art,.dcf-tail){animation-play-state:paused}
+  .doodle-name .dcf-bubbles{position:absolute;inset:0;pointer-events:none;z-index:2}
+  .doodle-name .dcf-bubble{position:absolute;left:clamp(90px,var(--bubble-x),calc(100% - 90px));transform:translate(-50%,-100%) rotate(-2deg);transform-origin:50% 100%;background:var(--dcf-bg);color:var(--text);border:2px solid var(--dcf-ink);border-radius:16px;padding:7px 12px;font-size:13px;font-weight:700;line-height:1.25;white-space:normal;width:max-content;max-width:min(230px,calc(100vw - 48px));box-shadow:3px 3px 0 var(--dcf-ink);animation:dcf-bubble .32s cubic-bezier(.3,1.6,.5,1) both;margin-top:-4px}
+  .doodle-name .dcf-bubble::after{content:'';position:absolute;left:50%;bottom:-9px;width:14px;height:14px;background:var(--dcf-bg);border-right:2px solid var(--dcf-ink);border-bottom:2px solid var(--dcf-ink);transform:translateX(-50%) rotate(45deg) skew(8deg,8deg)}
+  .doodle-name .dcf-bubble.is-left{left:min(var(--bubble-x),100%);transform:translate(-88%,-100%) rotate(2deg);transform-origin:88% 100%}
+  .doodle-name .dcf-bubble.is-left::after{left:88%}
+  @media(hover:hover) and (pointer:fine){.doodle-name .dcf-glyph:hover{animation:dcf-jiggle .6s cubic-bezier(.3,1.5,.5,1)}}
+  :root[data-focus=true] .doodle-crew,:root[data-focus=true] .doodle-crew-control,:root[data-focus=true] .dcf-bubbles{display:none}
+  :root[data-focus=true] .doodle-name *{animation:none!important;transition:none!important;opacity:1;stroke-dashoffset:0}
+  :root[data-focus=true] .doodle-name .dcf-dust{opacity:0}
+  @media(prefers-reduced-motion:reduce){
+    .doodle-name *,.doodle-name *::after{animation:none!important;transition:none!important;opacity:1;stroke-dashoffset:0}
+    .doodle-name .dcf-dust{opacity:0}
+  }
+}
+
+@layer components {
+@keyframes dcf-stamp{0%{opacity:0;transform:translateY(-34%) scale(1.28) rotate(var(--r))}55%{opacity:1;transform:translateY(2%) scale(.95,1.05) rotate(0deg)}75%{transform:translateY(0) scale(1.04,.95)}100%{opacity:1;transform:none}}
+@keyframes dcf-dust{0%{opacity:0;stroke-dasharray:0 40}30%{opacity:.9}100%{opacity:0;stroke-dasharray:14 40;stroke-dashoffset:-16}}
+@keyframes dcf-rise-up{0%{opacity:0;transform:translateY(30%) scale(.7,.3)}45%{opacity:1;transform:translateY(-8%) scale(.92,1.12)}70%{transform:translateY(0) scale(1.08,.92)}100%{opacity:1;transform:none}}
+@keyframes dcf-plop{0%{opacity:0;transform:translateY(-90%)}50%{opacity:1;transform:translateY(0) scale(1.1,.86)}68%{transform:translateY(-10%) scale(.96,1.04)}84%{transform:translateY(0) scale(1.03,.97)}100%{opacity:1;transform:none}}
+@keyframes dcf-peek{0%{opacity:0;transform:translateY(55%)}60%{opacity:1;transform:translateY(-6%)}100%{opacity:1;transform:none}}
+@keyframes dcf-jiggle{0%{transform:none}25%{transform:rotate(-4deg) scale(1.03,.97)}50%{transform:rotate(3deg) translateY(-3%)}75%{transform:rotate(-1.5deg)}100%{transform:none}}
+@keyframes dcf-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes dcf-swing{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2.5deg)}}
+@keyframes dcf-peck{0%,62%,100%{transform:none}66%{transform:rotate(14deg) translateY(2px)}70%{transform:none}74%{transform:rotate(12deg) translateY(2px)}78%{transform:none}}
+@keyframes dcf-tail{0%,100%{transform:rotate(0deg)}50%{transform:rotate(-12deg)}}
+@keyframes dcf-bubble{from{opacity:0;scale:.6}to{opacity:1;scale:1}}
+}
