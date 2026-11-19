@@ -67,6 +67,33 @@ test('records country and server time, reusing the 30-minute session cookie afte
   assert.doesNotMatch(JSON.stringify(calls), /192\.0\.2\.1/);
 });
 
+test('browser exclusion keeps its footer stats without recording future visits', async t => {
+  const calls = [];
+  const history = {total: 1, recent: [visit]};
+  mockWorker(t, command => { calls.push(command.method); return history; });
+  const url = origin + '/api/visitors?exclude=1';
+  const blocked = await handleVisitorsRequest(new Request(url, {headers: {'sec-fetch-site': 'cross-site'}}));
+  assert.equal(blocked.status, 403);
+  assert.equal(blocked.headers.get('set-cookie'), null);
+  const activate = await handleVisitorsRequest(new Request(url));
+  assert.equal(activate.status, 303);
+  assert.equal(activate.headers.get('location'), '/');
+  assert.equal(activate.headers.get('cache-control'), 'no-store');
+  const cookie = activate.headers.get('set-cookie');
+  assert.equal(cookie, 'portfolio_visit_excluded=1; HttpOnly; Secure; SameSite=Lax; Path=/api/visitors; Max-Age=31536000');
+  assert.deepEqual(calls, []);
+  for (const method of ['GET', 'POST']) {
+    const response = await handleVisitorsRequest(request(method, {cookie: 'unrelated=x; ' + cookie.split(';')[0]}));
+    assert.equal(response.headers.get('set-cookie'), null);
+    assert.deepEqual(await response.json(), {...history, excluded: true});
+  }
+  const normal = await handleVisitorsRequest(request('POST', {cookie: 'other_portfolio_visit_excluded=1; portfolio_visit_excluded=10'}));
+  assert.deepEqual(await normal.json(), history);
+  assert.deepEqual(calls, ['GET', 'GET', 'POST']);
+  const panel = panelModule({...history, excluded: true});
+  assert.match(renderToStaticMarkup(React.createElement(panel.VisitorActivity)), /This browser is excluded from visit counting/);
+});
+
 test('read-only and opted-out requests skip recording; storage errors never show fake zero', async t => {
   const calls = [];
   let result = {total: 0, recent: []};
@@ -123,7 +150,7 @@ test('panel renders anonymous visit, country and date rollover in WIB, inside fo
   assert.match(html, /Anonymous #1/);
   assert.match(html, /<th scope="col">Date &amp; time \(WIB\)<\/th>/);
   assert.match(html, /<time dateTime="2026-11-19T22:34:00.000Z">20 Nov 2026, 05:34 WIB<\/time>/);
-  assert.doesNotMatch(html, /<nav/);
+  assert.doesNotMatch(html, /<nav|This browser is excluded/);
   const unavailable = panelModule(null);
   const fallback = renderToStaticMarkup(React.createElement(unavailable.VisitorActivity));
   assert.match(fallback, /Statistics unavailable/);

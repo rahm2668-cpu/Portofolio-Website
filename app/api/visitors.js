@@ -13,6 +13,17 @@ export async function handleVisitorsRequest(request) {
   }
   if (request.body && await request.text()) return json({error: 'Request body is not supported'}, 400);
 
+  if (request.method === 'GET' && new URL(request.url).searchParams.get('exclude') === '1') {
+    if (request.headers.get('sec-fetch-site') === 'cross-site' && request.headers.get('sec-fetch-user') !== '?1') {
+      return json({error: 'Open the exclusion link directly'}, 403);
+    }
+    // ponytail: browser-only preference; add account settings if cross-device opt-out is needed.
+    return new Response(null, {status: 303, headers: {
+      Location: '/', 'Cache-Control': 'no-store',
+      'Set-Cookie': 'portfolio_visit_excluded=1; HttpOnly; Secure; SameSite=Lax; Path=/api/visitors; Max-Age=31536000',
+    }});
+  }
+
   const url = process.env.VISITOR_API_URL;
   const token = process.env.VISITOR_API_TOKEN;
   if (!url || !token) return json({error: 'Visitor statistics are not connected yet'}, 503);
@@ -26,7 +37,8 @@ export async function handleVisitorsRequest(request) {
 
   const optOut = request.headers.get('dnt') === '1' || request.headers.get('sec-gpc') === '1';
   const bot = /bot|crawler|spider|headless|preview|curl|wget/i.test(request.headers.get('user-agent') || '');
-  const record = request.method === 'POST' && !optOut && !bot;
+  const excluded = /(?:^|;\s*)portfolio_visit_excluded=1(?:;|$)/.test(request.headers.get('cookie') || '');
+  const record = request.method === 'POST' && !optOut && !bot && !excluded;
   const saved = /(?:^|;\s*)portfolio_visit=([a-f0-9]{32})(?:;|$)/.exec(request.headers.get('cookie') || '')?.[1];
   const session = saved || randomBytes(16).toString('hex');
   const code = process.env.VERCEL === '1' ? request.headers.get('x-vercel-ip-country') : null;
@@ -48,7 +60,7 @@ export async function handleVisitorsRequest(request) {
       || !(item.country === null || /^[A-Z]{2}$/.test(item.country))
       || typeof item.at !== 'string' || !Number.isFinite(Date.parse(item.at)))) throw new Error();
     const headers = record && !saved ? {'Set-Cookie': `portfolio_visit=${session}; HttpOnly; Secure; SameSite=Lax; Path=/api/visitors; Max-Age=1800`} : {};
-    return json({total, recent}, 200, headers);
+    return json({total, recent, ...(excluded ? {excluded: true} : {})}, 200, headers);
   } catch {
     return json({error: 'Visitor statistics are temporarily unavailable'}, 503);
   }

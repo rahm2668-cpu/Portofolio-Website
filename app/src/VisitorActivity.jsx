@@ -52,6 +52,7 @@ export function VisitorActivity() {
       <span className="visitor-chevron" aria-hidden="true"/>
     </summary>
     <div className="visitor-content">
+      {activity?.excluded === true && <p className="visitor-note">This browser is excluded from visit counting.</p>}
       <p className="visitor-note">Anonymous sessions, not unique people. Reloads within 30 minutes count once when cookies are allowed. Country is approximate; times use WIB (UTC+7).</p>
       {activity === null ? <div className="visitor-empty"><p>Visit statistics are not connected or temporarily unavailable. No estimated numbers are shown.</p><button type="button" onClick={retry}>Try again</button></div>
         : activity === undefined ? <p className="visitor-empty" role="status">Loading visit statistics...</p>
