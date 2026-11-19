@@ -5,6 +5,7 @@ import { WelcomeIntro } from "./components/ui/welcome-intro.jsx";
 import "./fonts.css";
 import "./tailwind.css";
 import "./replica.css";
+import "./visitors.css";
 import "./components/ui/flame-button.css";
 import "./components/ui/spotlight-card.css";
 import "./components/ui/welcome-intro.css";

@@ -119,6 +119,16 @@ Motion powers the shared animation system. With `prefers-reduced-motion: reduce`
 
 The homepage portrait and the first project screenshot receive high fetch priority. Other gallery images stay lazy/low priority until selected; the enlarged image viewer fetches its visible image eagerly.
 
+## Visitor activity
+
+The collapsible panel at the bottom of the page inside the footer shows recorded anonymous visits, approximate country, and date/time in Asia/Jakarta (WIB, UTC+7). It is not part of the navbar. It retains only the latest 20 activity entries; the cumulative counter remains. No names, IP addresses, city or fingerprints are stored. The public log uses minute precision. Real identity cannot be inferred. Do Not Track, Global Privacy Control and recognized bots skip recording.
+
+Persistent statistics use Cloudflare D1 (`portfolio-visitors`) through the authenticated Worker in `app/cloudflare-visitors/`. Set server-only `VISITOR_API_URL` and `VISITOR_API_TOKEN` in Vercel; the token must match the Worker's `API_KEY` secret. The Worker has only a D1 binding, not an account API token. Schema is in `app/cloudflare-visitors/schema.sql`; apply it once before deployment. D1 batches keep recording, session deduplication, pruning and reads atomic. Hashed session IDs expire after 30 minutes; the cumulative SQLite sequence persists after pruning history. Never expose the token through `VITE_` variables, browser code or Git. Variable names are listed in `app/.env.example`. No new client package is needed.
+
+Missing storage or backend failures show an unavailable state, never a fake zero. Recording begins only after activation; past visitors cannot be recovered. Counts represent sessions, not verified unique humans: reloads within 30 minutes count once when the session cookie is accepted. Clearing/blocking cookies or using another browser can count again; bot filtering is best-effort. Plain Vite and the static Sites build do not run Vercel Functions, so their panel shows unavailable without a separately hosted API.
+
+Run the visitor checks with `node --test tests/visitors.test.mjs` inside `app`.
+
 ## Run locally
 
 Install Node.js 20.19+ or 22.12+. npm is included with Node.js.

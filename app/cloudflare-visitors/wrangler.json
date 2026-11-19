@@ -1,0 +1,8 @@
+{
+  "name": "portfolio-visitors",
+  "main": "index.js",
+  "compatibility_date": "2026-11-19",
+  "workers_dev": true,
+  "observability": {"enabled": false},
+  "d1_databases": [{"binding": "DB", "database_name": "portfolio-visitors", "database_id": "d69bd549-f3b8-44e7-a42b-23c354014a63"}]
+}

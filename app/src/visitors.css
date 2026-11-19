@@ -1,0 +1,37 @@
+@layer components {
+.visitor-panel {width:100%; margin:32px 0 0; border:1px solid var(--line); border-radius:12px; background:linear-gradient(110deg,var(--surface-hover),var(--surface) 55%); color:var(--text); font-size:12px;}
+.visitor-panel summary {display:flex; align-items:center; gap:28px; min-height:80px; padding:16px 22px; cursor:pointer; list-style:none; border-radius:12px;}
+.visitor-panel summary::-webkit-details-marker {display:none;}
+.visitor-panel summary:focus-visible {outline:2px solid var(--accent); outline-offset:4px;}
+.visitor-heading,.visitor-total,.visitor-latest {display:flex; flex-direction:column; gap:6px; min-width:0;}
+.visitor-heading {margin-right:auto; font-weight:700; font-size:13px;}
+.visitor-subtitle,.visitor-total>span,.visitor-latest,.visitor-note,.visitor-privacy {font-size:11px; color:var(--muted); font-weight:400; line-height:1.7;}
+.visitor-total strong {font-size:24px; line-height:1; font-variant-numeric:tabular-nums; letter-spacing:-.6px;}
+.visitor-latest {text-align:right; font-variant-numeric:tabular-nums;}
+.visitor-latest time {color:var(--accent);}
+.visitor-chevron {flex-shrink:0; width:7px; height:7px; border:solid var(--muted); border-width:0 1.5px 1.5px 0; transform:rotate(45deg); margin:0 3px 4px 0;}
+.visitor-panel[open] .visitor-chevron {transform:rotate(225deg); margin-top:6px;}
+.visitor-content {border-top:1px solid var(--line); padding:16px 22px;}
+.visitor-note {margin:0 0 16px; max-width:82ch;}
+.visitor-table-scroll {max-height:292px; overflow:auto; scrollbar-gutter:stable;}
+.visitor-panel table {width:100%; border-collapse:collapse; text-align:left; font-size:12px;}
+.visitor-panel caption {text-align:left; color:var(--accent); font-size:12px; padding:0 0 12px;}
+.visitor-panel th,.visitor-panel td {padding:12px 14px 12px 0; border-bottom:1px solid var(--line); white-space:nowrap;}
+.visitor-panel th {font-weight:500;}
+.visitor-panel thead th {color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:.7px;}
+.visitor-panel td {color:var(--muted);}
+.visitor-panel time {font-variant-numeric:tabular-nums;}
+.visitor-empty {color:var(--muted); font-size:12px; line-height:1.8;}
+.visitor-empty p {margin:0;}
+.visitor-empty button {min-height:44px; border:1px solid var(--line); border-radius:8px; padding:8px 14px; margin-top:12px; background:var(--surface-hover);}
+.visitor-privacy {margin:16px 0 0; max-width:92ch; font-size:10px;}
+@media(max-width:720px) {
+  .visitor-panel summary {flex-wrap:wrap; gap:14px; padding:16px;}
+  .visitor-heading {flex:1 1 55%;}
+  .visitor-total {flex-direction:row; align-items:baseline; gap:8px;}
+  .visitor-total strong {font-size:20px;}
+  .visitor-latest {flex:1 1 calc(100% - 30px); text-align:left; gap:2px;}
+  .visitor-chevron {margin-left:auto;}
+  .visitor-content {padding:16px;}
+}
+}
